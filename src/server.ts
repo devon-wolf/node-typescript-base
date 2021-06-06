@@ -1,6 +1,5 @@
 import app from './lib/app';
-
-const PORT = 7890
+import { PORT } from './lib/config/constants';
 
 app.listen(PORT, () => {
 	console.log('Started on 7890');
