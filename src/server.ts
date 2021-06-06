@@ -1,5 +1,7 @@
 import app from './lib/app';
 
-app.listen(7890, () => {
+const PORT = 7890
+
+app.listen(PORT, () => {
 	console.log('Started on 7890');
 });
