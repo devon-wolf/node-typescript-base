@@ -1,5 +1,9 @@
 import app from './lib/app';
-import { PORT } from './lib/config/constants';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+const PORT = process.env.PORT || 7890;
 
 app.listen(PORT, () => {
     console.log(`Started on ${PORT}`);
