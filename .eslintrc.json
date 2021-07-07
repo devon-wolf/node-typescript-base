@@ -20,9 +20,9 @@
             "error",
             4
         ],
-        "linebreak-style": [
+        "eol-last": [
             "error",
-            "windows"
+            "always"
         ],
         "quotes": [
             "error",
