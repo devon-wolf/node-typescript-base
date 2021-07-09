@@ -4,9 +4,9 @@ import request from 'supertest';
 import app from '../lib/app';
 
 describe.skip('test routes', () => {
-    // beforeEach(() => {
-    //     return setup(pool);
-    // });
+    beforeEach(() => {
+        return setup(pool);
+    });
 
     it('makes a GET request', async () => {
         const response = await request(app).get('/api/v1/tests');
