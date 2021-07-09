@@ -10,8 +10,7 @@
     "build:dev": "tsc --watch --preserveWatchOutput",
     "start:watch": "concurrently \"npm:build:dev\" \"npm:start:dev\"",
     "setup-heroku-db": "heroku addons:create heroku-postgresql:hobby-dev && heroku config:set PGSSLMODE=require && heroku config:get DATABASE_URL",
-    "setup-db": "tsc && node dist/setup-db.js",
-    "setup-heroku": "heroku run npm run setup-db"
+    "setup-db": "tsc && node dist/setup-db.js"  
   },
   "jest": {
     "preset": "ts-jest"
