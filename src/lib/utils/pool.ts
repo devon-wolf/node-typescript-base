@@ -1,9 +1,9 @@
 import pg from 'pg';
-import { DATABASE_URL } from '../../config/constants';
+import { DATABASE_URL, PGSSLMODE } from '../../config/constants';
 
 const pool = new pg.Pool({
     connectionString: DATABASE_URL,
-    ssl: true && { rejectUnauthorized: false }
+    ssl: PGSSLMODE && { rejectUnauthorized: false } ? true : false
 });
 
 pool.on('connect', () => console.log('Postgres connected'));
