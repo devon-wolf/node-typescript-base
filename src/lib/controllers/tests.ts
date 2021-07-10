@@ -30,16 +30,15 @@ export default Router()
     .put('/:id', (req, res, next) => {
         console.log(`PUT request for id ${req.params.id}`);
         Test
-            .replace(req.params.id, req.body)
+            .update(req.params.id, req.body)
             .then(test => res.send(test))
             .catch((err : Error) => res.send(err));
     })
 
-    .patch('/:id', (req, res, next) => {
-        console.log(`PATCH request for id ${req.params.id}`);
-        res.send(`Patched ${req.params.id}!`);
-    })
     .delete('/:id', (req, res, next) => {
         console.log(`DELETE request for id ${req.params.id}`);
-        res.send(`Deleted ${req.params.id}!`);
+        Test
+            .delete(req.params.id)
+            .then(test => res.send(test))
+            .catch((err : Error) => res.send(err));
     });

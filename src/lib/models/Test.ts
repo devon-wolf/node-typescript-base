@@ -38,7 +38,7 @@ export default class Test {
 	    return new Test(rows[0]);
 	}
 
-	static async replace(id: string, { testName, testBody }: TestRequest): Promise<Test> {
+	static async update(id: string, { testName, testBody }: TestRequest): Promise<Test> {
 	    const { rows } = await pool.query(`
             UPDATE tests
             SET
@@ -52,6 +52,11 @@ export default class Test {
 	        testBody,
 	        id
 	    ]);
+	    return new Test(rows[0]);
+	}
+
+	static async delete(id: string) : Promise<Test> {
+	    const { rows } = await pool.query('DELETE FROM tests WHERE id=$1', [id]);
 	    return new Test(rows[0]);
 	}
 }
