@@ -10,3 +10,14 @@ export abstract class CRUDModel {
 export class ExpressError extends Error {
 	status : number | undefined;
 }
+
+export interface TestRow {
+	id: string;
+	test_name: string;
+	test_body: string;
+}
+
+export interface TestRequest {
+	testName: string;
+	testBody: string;
+}

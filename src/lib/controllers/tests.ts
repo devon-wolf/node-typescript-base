@@ -1,15 +1,24 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Router } from 'express';
+import Test from '../models/Test';
 
 export default Router()
     .post('/', (req, res, next) => {
         console.log('POST request');
-        res.send('Posted!');
+        Test
+            .create(req.body)
+            .then(test => res.send(test))
+            .catch((err : Error) => res.send(err));
     })
+
     .get('/', (req, res, next) => {
         console.log('GET request');
-        res.send('Got!');
+        Test
+            .getAll()
+            .then(tests => res.send(tests))
+            .catch((err: Error) => res.send(err));
     })
+
     .get('/:id', (req, res, next) => {
         console.log(`GET request for id ${req.params.id}`);
         res.send(`Got ${req.params.id}!`);
