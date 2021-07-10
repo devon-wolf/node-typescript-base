@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Router } from 'express';
 import Test from '../models/Test';
 
@@ -8,7 +7,7 @@ export default Router()
         Test
             .create(req.body)
             .then(test => res.send(test))
-            .catch((err : Error) => res.send(err));
+            .catch(next);
     })
 
     .get('/', (req, res, next) => {
@@ -16,7 +15,7 @@ export default Router()
         Test
             .getAll()
             .then(tests => res.send(tests))
-            .catch((err: Error) => res.send(err));
+            .catch(next);
     })
 
     .get('/:id', (req, res, next) => {
@@ -24,7 +23,7 @@ export default Router()
         Test
             .getById(req.params.id)
             .then(test => res.send(test))
-            .catch((err : Error) => res.send(err));
+            .catch(next);
     })
 
     .put('/:id', (req, res, next) => {
@@ -32,7 +31,7 @@ export default Router()
         Test
             .update(req.params.id, req.body)
             .then(test => res.send(test))
-            .catch((err : Error) => res.send(err));
+            .catch(next);
     })
 
     .delete('/:id', (req, res, next) => {
@@ -40,5 +39,5 @@ export default Router()
         Test
             .delete(req.params.id)
             .then(test => res.send(test))
-            .catch((err : Error) => res.send(err));
+            .catch(next);
     });
