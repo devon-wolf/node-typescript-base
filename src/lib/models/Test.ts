@@ -32,4 +32,9 @@ export default class Test {
 	    const { rows } = await pool.query('SELECT * FROM tests');
 	    return rows.map(row => new Test(row));
 	}
+
+	static async getById(id: string): Promise<Test> {
+	    const { rows } = await pool.query('SELECT * FROM tests WHERE id=$1', [id]);
+	    return new Test(rows[0]);
+	}
 }

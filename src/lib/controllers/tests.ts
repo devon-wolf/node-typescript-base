@@ -21,8 +21,12 @@ export default Router()
 
     .get('/:id', (req, res, next) => {
         console.log(`GET request for id ${req.params.id}`);
-        res.send(`Got ${req.params.id}!`);
+        Test
+            .getById(req.params.id)
+            .then(test => res.send(test))
+            .catch((err : Error) => res.send(err));
     })
+    
     .put('/:id', (req, res, next) => {
         console.log(`PUT request for id ${req.params.id}`);
         res.send(`Put ${req.params.id}!`);
