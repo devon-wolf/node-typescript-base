@@ -26,11 +26,15 @@ export default Router()
             .then(test => res.send(test))
             .catch((err : Error) => res.send(err));
     })
-    
+
     .put('/:id', (req, res, next) => {
         console.log(`PUT request for id ${req.params.id}`);
-        res.send(`Put ${req.params.id}!`);
+        Test
+            .replace(req.params.id, req.body)
+            .then(test => res.send(test))
+            .catch((err : Error) => res.send(err));
     })
+
     .patch('/:id', (req, res, next) => {
         console.log(`PATCH request for id ${req.params.id}`);
         res.send(`Patched ${req.params.id}!`);

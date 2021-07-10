@@ -37,4 +37,21 @@ export default class Test {
 	    const { rows } = await pool.query('SELECT * FROM tests WHERE id=$1', [id]);
 	    return new Test(rows[0]);
 	}
+
+	static async replace(id: string, { testName, testBody }: TestRequest): Promise<Test> {
+	    const { rows } = await pool.query(`
+            UPDATE tests
+            SET
+            test_name=$1,
+            test_body=$2
+            WHERE id=$3
+            RETURNING *
+        `,
+	    [
+	        testName,
+	        testBody,
+	        id
+	    ]);
+	    return new Test(rows[0]);
+	}
 }
