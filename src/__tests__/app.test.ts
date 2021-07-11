@@ -3,7 +3,7 @@ import setup from '../data/setup';
 import request from 'supertest';
 import app from '../lib/app';
 
-describe.skip('test routes', () => {
+describe('test routes', () => {
     beforeEach(() => {
         return setup(pool);
     });

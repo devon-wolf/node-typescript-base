@@ -1,2 +1,6 @@
-export const preset = 'ts-jest';
-export const testEnvironment = 'node';
+/* eslint-disable no-undef */
+module.exports = {
+    preset: 'ts-jest',
+    testEnvironment: 'node',
+    testPathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/']
+};
