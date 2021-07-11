@@ -1,6 +1,6 @@
 import express from 'express';
 import { handleError, handleNotFound } from './middleware/error-handling';
-import testRoutes from './controllers/tests';
+import testRoutes from './controllers/examples';
 
 const app = express();
 

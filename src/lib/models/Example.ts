@@ -15,7 +15,6 @@ export default class Test {
 	}
 
 	static async create({ testName, testBody }: TestRequest): Promise<Test> {
-	    console.log(testName, testBody);
 	    const { rows } = await pool.query(
 	        `INSERT INTO tests (test_name, test_body)
 			VALUES ($1, $2)

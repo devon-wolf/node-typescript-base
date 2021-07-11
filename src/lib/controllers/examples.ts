@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import Test from '../models/Test';
+import Test from '../models/Example';
 
 export default Router()
     .post('/', (req, res, next) => {
