@@ -1,43 +1,43 @@
 import { Router } from 'express';
-import Test from '../models/Example';
+import Example from '../models/Example';
 
 export default Router()
     .post('/', (req, res, next) => {
         console.log('POST request');
-        Test
+        Example
             .create(req.body)
-            .then(test => res.send(test))
+            .then(example => res.send(example))
             .catch(next);
     })
 
     .get('/', (req, res, next) => {
         console.log('GET request');
-        Test
+        Example
             .getAll()
-            .then(tests => res.send(tests))
+            .then(examples => res.send(examples))
             .catch(next);
     })
 
     .get('/:id', (req, res, next) => {
         console.log(`GET request for id ${req.params.id}`);
-        Test
+        Example
             .getById(req.params.id)
-            .then(test => res.send(test))
+            .then(example => res.send(example))
             .catch(next);
     })
 
     .put('/:id', (req, res, next) => {
         console.log(`PUT request for id ${req.params.id}`);
-        Test
+        Example
             .update(req.params.id, req.body)
-            .then(test => res.send(test))
+            .then(example => res.send(example))
             .catch(next);
     })
 
     .delete('/:id', (req, res, next) => {
         console.log(`DELETE request for id ${req.params.id}`);
-        Test
+        Example
             .delete(req.params.id)
-            .then(test => res.send(test))
+            .then(example => res.send(example))
             .catch(next);
     });

@@ -1,9 +1,9 @@
 -- parent folder (/sql) needs to be on the same directory level as /src and /dist in order to be accessible --
 
-DROP TABLE IF EXISTS tests;
+DROP TABLE IF EXISTS examples;
 
-CREATE TABLE tests (
+CREATE TABLE examples (
 	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	test_name VARCHAR(512) NOT NULL,
-	test_body VARCHAR(512) NOT NULL
+	example_name VARCHAR(512) NOT NULL,
+	example_body VARCHAR(512) NOT NULL
 );

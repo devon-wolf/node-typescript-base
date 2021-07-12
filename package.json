@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
+    "start": "tsc && node dist/server.js",
     "start:dev": "nodemon dist/server.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
     "start:watch": "concurrently \"npm:build:dev\" \"npm:start:dev\"",

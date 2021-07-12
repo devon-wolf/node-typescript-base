@@ -1,61 +1,61 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
-import { TestRequest, TestRow } from '../../types';
+import { ExampleRequest, ExampleRow } from '../../types';
 import pool from '../utils/pool';
 
-export default class Test {
+export default class Example {
 	id: string;
-	testName: string;
-	testBody: string;
+	exampleName: string;
+	exampleBody: string;
 
-	constructor(row: TestRow) {
-	    const { id, test_name, test_body } = row;
+	constructor(row: ExampleRow) {
+	    const { id, example_name, example_body } = row;
 	    this.id = id;
-	    this.testName = test_name;
-	    this.testBody = test_body;
+	    this.exampleName = example_name;
+	    this.exampleBody = example_body;
 	}
 
-	static async create({ testName, testBody }: TestRequest): Promise<Test> {
+	static async create({ exampleName, exampleBody }: ExampleRequest): Promise<Example> {
 	    const { rows } = await pool.query(
-	        `INSERT INTO tests (test_name, test_body)
+	        `INSERT INTO examples (example_name, example_body)
 			VALUES ($1, $2)
 			RETURNING *`,
 	        [
-	            testName,
-	            testBody
+	            exampleName,
+	            exampleBody
 	        ]
 	    );
-	    return new Test(rows[0]);
+	    return new Example(rows[0]);
 	}
 
-	static async getAll(): Promise<Test[]> {
-	    const { rows } = await pool.query('SELECT * FROM tests');
-	    return rows.map(row => new Test(row));
+	static async getAll(): Promise<Example[]> {
+	    const { rows } = await pool.query('SELECT * FROM examples');
+	    return rows.map(row => new Example(row));
 	}
 
-	static async getById(id: string): Promise<Test> {
-	    const { rows } = await pool.query('SELECT * FROM tests WHERE id=$1', [id]);
-	    return new Test(rows[0]);
+	static async getById(id: string): Promise<Example> {
+	    const { rows } = await pool.query('SELECT * FROM examples WHERE id=$1', [id]);
+	    return new Example(rows[0]);
 	}
 
-	static async update(id: string, { testName, testBody }: TestRequest): Promise<Test> {
+	static async update(id: string, { exampleName, exampleBody }: ExampleRequest): Promise<Example> {
 	    const { rows } = await pool.query(`
-            UPDATE tests
+            UPDATE examples
             SET
-            test_name=$1,
-            test_body=$2
+            example_name=$1,
+            example_body=$2
             WHERE id=$3
             RETURNING *
         `,
 	    [
-	        testName,
-	        testBody,
+	        exampleName,
+	        exampleBody,
 	        id
 	    ]);
-	    return new Test(rows[0]);
+	    return new Example(rows[0]);
 	}
 
-	static async delete(id: string) : Promise<Test> {
-	    const { rows } = await pool.query('DELETE FROM tests WHERE id=$1', [id]);
-	    return new Test(rows[0]);
+	static async delete(id: string) : Promise<Example> {
+	    const { rows } = await pool.query('DELETE FROM examples WHERE id=$1 RETURNING *', [id]);
+	    return new Example(rows[0]);
 	}
 }

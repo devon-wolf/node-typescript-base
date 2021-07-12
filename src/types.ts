@@ -11,13 +11,13 @@ export class ExpressError extends Error {
 	status : number | undefined;
 }
 
-export interface TestRow {
+export interface ExampleRow {
 	id: string;
-	test_name: string;
-	test_body: string;
+	example_name: string;
+	example_body: string;
 }
 
-export interface TestRequest {
-	testName: string;
-	testBody: string;
+export interface ExampleRequest {
+	exampleName: string;
+	exampleBody: string;
 }
