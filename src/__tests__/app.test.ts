@@ -3,10 +3,10 @@ import setup from '../data/setup';
 import request from 'supertest';
 import app from '../lib/app';
 
-describe('test routes', () => {
-    // beforeEach(async () => {
-    //     await setup(pool);
-    // });
+describe.skip('test routes', () => {
+    beforeEach(async () => {
+        await setup(pool);
+    });
 
     it.skip('POSTs a test', async () => {
         const newTest = {
