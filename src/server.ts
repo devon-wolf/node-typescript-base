@@ -1,10 +1,12 @@
 import app from './lib/app';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
-
-const PORT = process.env.PORT || 7890;
+import pool from './lib/utils/pool';
+import { PORT } from './config/constants';
 
 app.listen(PORT, () => {
     console.log(`Started on ${PORT}`);
+});
+
+process.on('exit', () => {
+    console.log('Goodbye!');
+    pool.end();
 });
