@@ -3,37 +3,40 @@ import setup from '../data/setup';
 import request from 'supertest';
 import app from '../lib/app';
 
-describe.skip('test routes', () => {
+const seedExample = {
+    exampleName: 'seed',
+    exampleBody: 'this is the seed data'
+};
+
+describe('test routes', () => {
     beforeEach(async () => {
         await setup(pool);
+        await request(app)
+            .post('/api/v1/examples')
+            .send(seedExample);
     });
 
-    it.skip('POSTs a test', async () => {
-        const newTest = {
-            testName: 'A Name',
-            testBody: 'A Body'
+    it('POSTs a test', async () => {
+        const newExample = {
+            exampleName: 'A Name',
+            exampleBody: 'A Body'
         };
 
         const response = await request(app)
-            .post('/api/v1/tests')
-            .send(newTest);
+            .post('/api/v1/examples')
+            .send(newExample);
 
-        expect(response).toEqual({
-            ...newTest,
-            id: 1
+        expect(response.body).toEqual({
+            ...newExample,
+            id: '2'
         });
     });
 
-    it.skip('makes a GET request', async () => {
-        const response = await request(app).get('/api/v1/tests');
-        expect(response).toEqual([]);
-    });
-
-    it('is a sample test that should pass', () => {
-        expect(2 + 2).toEqual(4);
-    });
-
-    it('is a sample test that should fail', () => {
-        expect(2 + 2).toEqual(6);
+    it('makes a GET request', async () => {
+        const response = await request(app).get('/api/v1/examples');
+        expect(response.body).toEqual([{
+            ...seedExample,
+            id: '1'
+        }]);
     });
 });
