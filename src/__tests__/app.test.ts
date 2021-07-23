@@ -4,42 +4,43 @@ import request from 'supertest';
 import app from '../lib/app';
 
 describe('test routes', () => {
-    beforeEach(async () => {
-        await setup(pool);
+    beforeEach(() => {
+        return setup(pool);
     });
 
-    it('POSTs a new example', async () => {
+    it('POSTs a new example', () => {
         const newExample = {
             exampleName: 'A Name',
             exampleBody: 'A Body'
         };
 
-        const response = await request(app)
+        return request(app)
             .post('/api/v1/examples')
-            .send(newExample);
-
-        expect(response.body).toEqual({
-            ...newExample,
-            id: '1'
-        });
+            .send(newExample)
+            .then(response =>
+                expect(response.body).toEqual({
+                    ...newExample,
+                    id: '1'
+                }));
     });
 
-    it('makes a GET request', async () => {
+    it('makes a GET request', () => {
         const seedExample = {
             exampleName: 'seed',
             exampleBody: 'this is the seed data'
         };
 
-        await request(app)
+        request(app)
             .post('/api/v1/examples')
-            .send(seedExample);
-            
-        const response = await request(app)
-            .get('/api/v1/examples');
-        
-        expect(response.body).toEqual([{
-            ...seedExample,
-            id: '1'
-        }]);
+            .send(seedExample)
+            .then(() => console.log('seedExample posted'));
+
+        return request(app)
+            .get('/api/v1/examples')
+            .then(response =>
+                expect(response.body).toEqual([{
+                    ...seedExample,
+                    id: '1'
+                }]));
     });
 });
