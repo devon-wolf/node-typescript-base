@@ -10,6 +10,7 @@ const setup = (pool : Pool) : Promise<QueryResult<any> | void> => {
             { encoding: 'utf-8' }
         )
         .then(sql => {
+            console.log(sql);
             pool.query(sql);
             console.log('Query run on the setup file!');
         })
