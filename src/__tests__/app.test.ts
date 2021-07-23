@@ -33,7 +33,9 @@ describe('test routes', () => {
     });
 
     it('makes a GET request', async () => {
-        const response = await request(app).get('/api/v1/examples');
+        const response = await request(app)
+            .get('/api/v1/examples');
+        
         expect(response.body).toEqual([{
             ...seedExample,
             id: '1'
