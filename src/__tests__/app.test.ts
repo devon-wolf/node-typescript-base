@@ -11,12 +11,15 @@ const seedExample = {
 describe('test routes', () => {
     beforeEach(async () => {
         await setup(pool);
+    });
+
+    beforeEach(async () => {
         await request(app)
             .post('/api/v1/examples')
             .send(seedExample);
     });
 
-    it('POSTs a test', async () => {
+    it('POSTs a new example', async () => {
         const newExample = {
             exampleName: 'A Name',
             exampleBody: 'A Body'
