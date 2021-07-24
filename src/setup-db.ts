@@ -3,4 +3,6 @@ import setup from './data/setup';
 
 console.log('Setting up the database...');
 
-setup(pool);
+const setupPool = async () => await setup(pool);
+
+setupPool();
