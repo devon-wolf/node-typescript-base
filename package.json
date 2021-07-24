@@ -1,16 +1,15 @@
 {
-  "name": "typescript-node-sandbox",
+  "name": "typescript-node-template",
   "version": "1.0.0",
-  "description": "Trying to figure out the smoothest, leanest TS setup for Node.",
+  "description": "A TypeScript template for Node-Express-Postgres projects",
   "main": "dist/server.js",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watch --detectOpenHandles",
     "start": "tsc && node dist/server.js",
     "start:dev": "nodemon dist/server.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
     "start:watch": "concurrently \"npm:build:dev\" \"npm:start:dev\"",
-    "setup-heroku-db": "heroku addons:create heroku-postgresql:hobby-dev && heroku config:set PGSSLMODE=require && heroku config:get DATABASE_URL",
     "setup-db": "tsc && node dist/setup-db.js"
   },
   "keywords": [],
