@@ -3,7 +3,6 @@ import Example from '../models/Example';
 
 export default Router()
     .post('/', (req, res, next) => {
-        console.log('POST request');
         Example
             .create(req.body)
             .then(example => res.send(example))
@@ -11,7 +10,6 @@ export default Router()
     })
 
     .get('/', (req, res, next) => {
-        console.log('GET request');
         Example
             .getAll()
             .then(examples => res.send(examples))
@@ -19,7 +17,6 @@ export default Router()
     })
 
     .get('/:id', (req, res, next) => {
-        console.log(`GET request for id ${req.params.id}`);
         Example
             .getById(req.params.id)
             .then(example => res.send(example))
@@ -27,7 +24,6 @@ export default Router()
     })
 
     .put('/:id', (req, res, next) => {
-        console.log(`PUT request for id ${req.params.id}`);
         Example
             .update(req.params.id, req.body)
             .then(example => res.send(example))
@@ -35,7 +31,6 @@ export default Router()
     })
 
     .delete('/:id', (req, res, next) => {
-        console.log(`DELETE request for id ${req.params.id}`);
         Example
             .delete(req.params.id)
             .then(example => res.send(example))
