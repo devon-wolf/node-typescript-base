@@ -1,7 +1,7 @@
 import pool from '../lib/utils/pool';
 import setup from '../data/setup';
 
-describe('test routes', () => {
+describe('app tests', () => {
     beforeEach(async () => {
         await setup(pool);
     });
