@@ -1,8 +1,9 @@
 import pg from 'pg';
-import { DATABASE_URL, PGSSLMODE } from '../../config/constants';
+
+const PGSSLMODE = process.env.PGSSLMODE ? true : false;
 
 const pool = new pg.Pool({
-    connectionString: DATABASE_URL,
+    connectionString: process.env.DATABASE_URL,
     ssl: PGSSLMODE && { rejectUnauthorized: false }
 });
 
