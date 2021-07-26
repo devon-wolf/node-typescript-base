@@ -10,7 +10,7 @@
     "start:dev": "nodemon  -r dotenv/config dist/server.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
     "start:watch": "concurrently \"npm:build:dev\" \"npm:start:dev\"",
-    "setup-db": "tsc && node dist/setup-db.js"
+    "setup-db": "tsc && node -r dotenv/config dist/setup-db.js"
   },
   "jest": {
     "preset": "ts-jest",
