@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import { Pool } from 'pg';
 
-const setup = async (pool : Pool): Promise<void> => {
+const setup = async (pool: Pool): Promise<void> => {
     
     const sql = await fs
         .readFile(

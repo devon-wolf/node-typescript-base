@@ -1,8 +1,10 @@
 import app from './lib/app';
 import pool from './lib/utils/pool';
 
-app.listen(process.env.PORT, () => {
-    console.log(`Started on ${process.env.PORT}`);
+const PORT = process.env.PORT || 7890;
+
+app.listen(PORT, () => {
+    console.log(`Started on ${PORT}`);
 });
 
 process.on('exit', () => {
