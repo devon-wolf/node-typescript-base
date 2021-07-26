@@ -13,8 +13,6 @@ There are several `npm` scripts:
 	- runs through the database-related pieces of the template, dropping and creating tables and setting up a Postgres client
 	- runs `tsc` to make sure it's using the latest code, then runs the `setup-db.js` file from `/dist`
 
-Environment variables are currently funneled through the `constants` file for sake of organization. There are plenty of other, probably better ways to do this - implement whatever method you prefer!
-
 ## How to Use This Template
 ### (particularly if you're new to TypeScript)
 
@@ -24,7 +22,7 @@ Environment variables are currently funneled through the `constants` file for sa
 
 - In your local environment, `cd` into the newly cloned project and run `npm i` to install the needed packages (take a peek in the `package.json` for a full list).
 
-- Set up your environment variables in a `.env` file. The included `.env-example` has a generic DATABASE_URL included and assigns PORT to 7890. Change these as needed in your `.env`. Any additional variables you might want to include in your `.env` should be funneled through `src/config/constants` when you include them in your project, following the pattern of what's already included. As mentioned above, this is something you can totally feel free to change; but if you're using the template as-is and not tinkering with the structure, this is the pattern to follow for things to work correctly.
+- Set up your environment variables in a `.env` file. The included `.env-example` has a generic DATABASE_URL included and assigns PORT to 7890. Change these as needed in your `.env`. The `dotenv` module configuration is handled in the scripts, so you can simply refer to `process.env.SOME_VARIABLE` wherever needed without importing the module.
 
 - To check that everything has been configured correctly, I recommend running the tests (see scripts above). There is a single example test that should pass, but if you can't get it to pass on a fresh install then there is likely something off in how I've configured this. **Please let me know!** Feel free to open issues or PRs for this or anything else that seems fishy.
 

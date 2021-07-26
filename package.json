@@ -4,10 +4,10 @@
   "description": "A TypeScript template for Node-Express-Postgres projects",
   "main": "dist/server.js",
   "scripts": {
-    "test": "jest --detectOpenHandles",
-    "test:watch": "jest --watch --detectOpenHandles",
-    "start": "tsc && node dist/server.js",
-    "start:dev": "nodemon dist/server.js",
+    "test": "jest --verbose --runInBand --testLocationInResults --detectOpenHandles --setupFiles dotenv/config",
+    "test:watch": "npm run test --watch",
+    "start": "tsc && node -r dotenv/config dist/server.js",
+    "start:dev": "nodemon  -r dotenv/config dist/server.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
     "start:watch": "concurrently \"npm:build:dev\" \"npm:start:dev\"",
     "setup-db": "tsc && node dist/setup-db.js"
