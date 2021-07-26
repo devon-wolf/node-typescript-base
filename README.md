@@ -34,4 +34,4 @@ Environment variables are currently funneled through the `constants` file for sa
 
 - Don't change files in the `/dist` folder. They're going to look awful, and that's okay. This is the result of your TypeScript code being transpiled to JavaScript, and it will update to reflect your most recent changes automatically.
 
-- In general, leave the folder hierarchy as it is unless you're going to be very meticulous about figuring out paths (although this gets less relevant/easier to manage the deeper you go). The `/sql` folder, for example, needs to be where it is to make it available to both the TS files in the `/src` directory and the JS files in `/dist` via the same path.
+- In general, leave the top-level folder/file hierarchy as it is. The `/sql` folder, for example, needs to be where it is to make it available to both the TS files in the `/src` directory and the JS files in `/dist` via the same path.
