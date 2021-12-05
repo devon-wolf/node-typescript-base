@@ -26,9 +26,9 @@ There are several `npm` scripts:
 
 - Set up your environment variables in a `.env` file. The included `.env-example` has a generic DATABASE_URL included and assigns PORT to 7890. Change these as needed in your `.env`. The `dotenv` module configuration is handled in the scripts, so you can simply refer to `process.env.SOME_VARIABLE` wherever needed without importing the module.
 
-- To check that everything has been configured correctly, I recommend running the tests (see scripts above). There is a single example test that should pass, but if you can't get it to pass on a fresh install then there is likely something off in how I've configured this. **Please let me know!** Feel free to open issues or PRs for this or anything else that seems fishy.
+- To check that everything has been configured correctly, I recommend running the tests (see scripts above). There is a set of 'health-check' tests that should pass out of the box, but if you can't get it to pass on a fresh install then there is likely something off in how I've configured this. **Please let me know!** Feel free to open issues or PRs for this or anything else that seems fishy.
 
-- If the test passes, run one of the start scripts and make sure it starts up correctly - once the server is successfully running you'll see a console log indicating what port it's listening on. If it doesn't work on the first try, try again - there are some quirks with how the TypeScript transpilation happens and I'm not confident I've worked them all out, but once the `/dist` folder has been created the start scripts should work just fine.
+- If the tests pass, run one of the start scripts and make sure it starts up correctly - once the server is successfully running you'll see a console log indicating what port it's listening on. If it doesn't work on the first try, try again - there are some quirks with how the TypeScript transpilation happens and I'm not confident I've worked them all out, but once the `/dist` folder has been created the start scripts should work just fine.
 
 - The `/dist` folder gets created the first time `tsc` runs, which may happen as a result of several scripts. It is included in the `.gitignore` list, so if you need to include your transpiled code in the repo where this will be uploaded (e.g. for deployment) you will want to remove it from the `.gitignore`.
 
@@ -37,10 +37,12 @@ There are several `npm` scripts:
 - In general, leave the top-level folder/file hierarchy as it is. The `/sql` folder, for example, needs to be where it is to make it available to both the TS files in the `/src` directory and the JS files in `/dist` via the same path.
 
 ## Testing and CI
+
 Jest testing in GitHub's test environment is configured in `.github/workflows/nodejs.yml`. I have removed the hardcoded credentials so that this can be used with whatever test database environment you happen to be using. You will need to add the relevant credentials to your GitHub repository - instructions for this process are currently outside the scope of this template, but I'll add a good link if I find one. Here are the credentials you will need to add if you wish to use this feature - these fields can also be replaced in the mentioned `.yml` file with the relevant information:
+
 - `POSTGRES_TEST_USER`
   - the username for your postgres test environemnt
 - `POSTGRES_TEST_PASSWORD`
   - the password for your postgres test environment
 - `POSTGRES_TEST_DB`
-  - the connection string for your postgres test database, which would look *something* like `postgres://username:password@host:port/databasename`
+  - the connection string for your postgres test database, which would look _something_ like `postgres://username:password@host:port/databasename`

@@ -1,18 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
-import { ExpressError } from '../../types';
 
 export const handleError = (
-  err: ExpressError,
+  err: { error: Error; status?: number },
   req: Request,
   res: Response
 ): void => {
-  console.log(err);
-
-  const status = err.status || 500;
-  res.status(status).send({
-    status,
-    message: err.message,
-  });
+  const { status, error } = err;
+  res.status(status || 500).send(error.message);
 };
 
 export const handleNotFound = (
@@ -20,7 +14,8 @@ export const handleNotFound = (
   res: Response,
   next: NextFunction
 ): void => {
-  const err = new ExpressError('Not Found');
-  err.status = 404;
-  next(err);
+  next({
+    error: new Error('Not Found'),
+    status: 404,
+  });
 };
