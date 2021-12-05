@@ -35,3 +35,12 @@ There are several `npm` scripts:
 - Don't change files in the `/dist` folder. They're going to look awful, and that's okay. This is the result of your TypeScript code being transpiled to JavaScript, and it will update to reflect your most recent changes automatically.
 
 - In general, leave the top-level folder/file hierarchy as it is. The `/sql` folder, for example, needs to be where it is to make it available to both the TS files in the `/src` directory and the JS files in `/dist` via the same path.
+
+## Testing and CI
+Jest testing in GitHub's test environment is configured in `.github/workflows/nodejs.yml`. I have removed the hardcoded credentials so that this can be used with whatever test database environment you happen to be using. You will need to add the relevant credentials to your GitHub repository - instructions for this process are currently outside the scope of this template, but I'll add a good link if I find one. Here are the credentials you will need to add if you wish to use this feature - these fields can also be replaced in the mentioned `.yml` file with the relevant information:
+- `POSTGRES_TEST_USER`
+  - the username for your postgres test environemnt
+- `POSTGRES_TEST_PASSWORD`
+  - the password for your postgres test environment
+- `POSTGRES_TEST_DB`
+  - the connection string for your postgres test database, which would look *something* like `postgres://username:password@host:port/databasename`

@@ -23,7 +23,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
+  "license": "GPL 3.0",
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/jest": "^27.0.3",
