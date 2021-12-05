@@ -1,3 +1,3 @@
 export class ExpressError extends Error {
-	status: number | undefined;
+  status: number | undefined;
 }
