@@ -1,12 +1,15 @@
-import pool from '../lib/utils/pool';
-import setup from '../data/setup';
+import pool from '../lib/database/pool';
+import setup from '../lib/database/setup';
+import request from 'supertest';
+import app from '../lib/app';
 
 describe('app tests', () => {
     beforeEach(async () => {
         await setup(pool);
     });
 
-    it('is a placeholder test that will pass', () => {
-        expect(2 + 2).toEqual(4);
+    it('responds to a request', async () => {
+        const response = await request(app).get('/');
+        expect(response).toBeTruthy();
     });
 });
