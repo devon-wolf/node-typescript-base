@@ -26,9 +26,9 @@ There are several `npm` scripts:
 
 - Set up your environment variables in a `.env` file. The included `.env-example` has a generic DATABASE_URL included and assigns PORT to 7890. Change these as needed in your `.env`. The `dotenv` module configuration is handled in the scripts, so you can simply refer to `process.env.SOME_VARIABLE` wherever needed without importing the module.
 
-- To check that everything has been configured correctly, I recommend running the tests (see scripts above). There is a single example test that should pass, but if you can't get it to pass on a fresh install then there is likely something off in how I've configured this. **Please let me know!** Feel free to open issues or PRs for this or anything else that seems fishy.
+- To check that everything has been configured correctly, I recommend running the tests (see scripts above). There is a set of 'health-check' tests that should pass out of the box, but if you can't get it to pass on a fresh install then there is likely something off in how I've configured this. **Please let me know!** Feel free to open issues or PRs for this or anything else that seems fishy.
 
-- If the test passes, run one of the start scripts and make sure it starts up correctly - once the server is successfully running you'll see a console log indicating what port it's listening on. If it doesn't work on the first try, try again - there are some quirks with how the TypeScript transpilation happens and I'm not confident I've worked them all out, but once the `/dist` folder has been created the start scripts should work just fine.
+- If the tests pass, run one of the start scripts and make sure it starts up correctly - once the server is successfully running you'll see a console log indicating what port it's listening on. If it doesn't work on the first try, try again - there are some quirks with how the TypeScript transpilation happens and I'm not confident I've worked them all out, but once the `/dist` folder has been created the start scripts should work just fine.
 
 - The `/dist` folder gets created the first time `tsc` runs, which may happen as a result of several scripts. It is included in the `.gitignore` list, so if you need to include your transpiled code in the repo where this will be uploaded (e.g. for deployment) you will want to remove it from the `.gitignore`.
 
