@@ -12,4 +12,9 @@ describe('app tests', () => {
     const response = await request(app).get('/');
     expect(response).toBeTruthy();
   });
+
+  it('responds to a request for an unimplemented endpoint with a 404 error', async () => {
+    const response = await request(app).get('/this-is-an-endpoint-that-is-not-used');
+    expect(response.status).toBe(404);
+  });
 });
