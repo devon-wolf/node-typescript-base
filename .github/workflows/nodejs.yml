@@ -9,12 +9,12 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: alchemy
-          POSTGRES_PASSWORD: alchemy
+          POSTGRES_USER: ${{ secrets.POSTGRES_TEST_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_TEST_PASSWORD }}
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
       - run: npm test
         env:
           CI: true
-          DATABASE_URL: postgres://alchemy:alchemy@postgres:5432/alchemy
+          DATABASE_URL: ${{ secrets.POSTGRES_TEST_DB }}
